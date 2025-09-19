@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.promoInfo {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 100%;
+}
+
+.promoTitle {
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 120%;
+
+    padding-top: 20px;
+}
+
+.promoDesc {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 150%;
+
+    padding: 20px 0;
+}
+
+.promoButtons {
+    padding: 15px 0;
+    display: flex;
+    gap: 20px;
+}

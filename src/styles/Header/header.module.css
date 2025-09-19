@@ -1,0 +1,51 @@
+.header {
+    height: 68px;
+    display: flex;
+    align-items: center;
+
+    background: #20484F;
+}
+
+.headerContent {
+    width: 100%;
+    margin: auto 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.headerLogo {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.headerLeft {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+}
+
+.headerLinks {
+    display: flex;
+    gap: 50px;
+}
+
+.link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 150%;
+    transition: color 0.3s ease;
+}
+
+.link:hover {
+    color: #B8E4DA;
+}
+
+.headerButtons {
+    display: flex;
+    gap: 15px;
+}
