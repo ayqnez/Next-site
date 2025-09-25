@@ -1,3 +1,5 @@
+import styles from '@/styles/index.module.css'
+
 import AnimatedStack from "@/components/AnimatedStack";
 import Promo from "@/components/Promo";
 
@@ -13,7 +15,7 @@ export default function Home() {
           buttons={[
             {
               href: '/start',
-              caption: 'Start'
+              caption: 'Start',
             },
             {
               href: '/learn',
@@ -24,8 +26,12 @@ export default function Home() {
             <AnimatedStack />
           }
           childrenClassNames={{
+            title: 'color-purple',
+            additinalContentNode: styles.promoAdd
           }}
         />
+
+        
       </div>
     </>
   );

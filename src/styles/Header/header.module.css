@@ -3,7 +3,7 @@
     display: flex;
     align-items: center;
 
-    background: #20484F;
+    background: #fff;
 }
 
 .headerContent {
@@ -16,7 +16,7 @@
 }
 
 .headerLogo {
-    color: #fff;
+    color: #6246EA;
     font-size: 24px;
     font-weight: 700;
 }
@@ -33,7 +33,7 @@
 }
 
 .link {
-    color: #fff;
+    color: #000;
     text-decoration: none;
     font-size: 16px;
     font-weight: 400;
@@ -42,7 +42,7 @@
 }
 
 .link:hover {
-    color: #B8E4DA;
+    color: #6246EA;
 }
 
 .headerButtons {

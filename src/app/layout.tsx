@@ -1,5 +1,6 @@
 import Header from '@/components/Header'
 import './globals.css'
+import '../styles/styles.scss'
 
 export const metadata = {
   title: "Next Site",

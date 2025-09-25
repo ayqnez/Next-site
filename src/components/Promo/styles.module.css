@@ -1,6 +1,9 @@
 .container {
     display: flex;
-    font-family: "Plus Jakarta Sans", sans-serif;
+    justify-content: space-between;
+    /* font-family: "Plus Jakarta Sans", sans-serif; */
+
+    background: #EFF0F3;
 }
 
 .promoInfo {

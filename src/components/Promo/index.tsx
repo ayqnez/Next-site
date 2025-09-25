@@ -21,7 +21,8 @@ type PromoProps = {
     childrenClassNames?: {
         container?: string,
         content?: string,
-        title?: string
+        title?: string,
+        additinalContentNode?: string,
     }
 }
 
@@ -55,7 +56,9 @@ export default function Promo(props: PromoProps) {
                 </div>
 
                 {additionalContentNode && (
-                    additionalContentNode
+                    <div className={clsx(styles.promoAdd, childrenClassNames?.additinalContentNode)}>
+                        {additionalContentNode}
+                    </div>
                 )}
             </div>
         </>
