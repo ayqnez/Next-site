@@ -1,10 +1,11 @@
 import styles from './styles.module.css'
 import clsx from 'clsx'
-import Button from '../Button'
+import Link from "next/link";
 
 type ButtonProps = {
     href: string,
     caption: string,
+    className?: string
 }
 
 type PromoProps = {
@@ -22,7 +23,7 @@ type PromoProps = {
         container?: string,
         content?: string,
         title?: string,
-        additinalContentNode?: string,
+        additionalContentNode?: string,
     }
 }
 
@@ -31,7 +32,7 @@ export default function Promo(props: PromoProps) {
 
     return (
         <>
-            <div className={clsx('bs-flex-container', styles.container)}>
+            <div className={clsx('bs-flex-container', styles.container, childrenClassNames?.container)}>
 
                 <div className={clsx(styles.content)} style={style}>
                     {info && (
@@ -49,14 +50,16 @@ export default function Promo(props: PromoProps) {
                     <div className={clsx(styles.promoButtons)}>
                         {buttons.length > 0 && (
                             buttons.map((btn, index) => (
-                                <Button key={index} link={btn.href} caption={btn.caption} />
+                                <Link key={index} href={btn.href} title={btn.caption} className={clsx('button', btn.className)}>
+                                    {btn.caption}
+                                </Link>
                             ))
                         )}
                     </div>
                 </div>
 
                 {additionalContentNode && (
-                    <div className={clsx(styles.promoAdd, childrenClassNames?.additinalContentNode)}>
+                    <div className={clsx(styles.promoAdd, childrenClassNames?.additionalContentNode)}>
                         {additionalContentNode}
                     </div>
                 )}

@@ -13,9 +13,11 @@ export default function AnimatedStack() {
         anime({
             targets: mainBlock.id,
             translateY: [
-                { value: '+=20', duration: 1000, easing: 'easeOutQuad' },
-                { value: '-=15', duration: 700, easing: 'easeInOutQuad' },
-                { value: '+=5', duration: 500, easing: 'easeOutQuad' }
+                { value: '+=20', duration: 2000, easing: 'easeOutQuad' },
+                { value: '-=15', duration: 1500, easing: 'easeInOutQuad' },
+                { value: '+=10', duration: 1300, easing: 'easeOutQuad' },
+                { value: '-=7', duration: 1000, easing: 'easeOutQuad' },
+                { value: '+=5', duration: 700, easing: 'easeInOutQuad' },
             ]
         })
 

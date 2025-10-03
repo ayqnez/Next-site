@@ -1,33 +1,94 @@
 * {
-    font-optical-sizing: auto;
-    font-weight: 400;
+  font-optical-sizing: auto;
+  font-weight: 400;
 }
 
 body {
-    margin: 0px;
+  margin: 0px;
 }
 
 .bs-flex-container {
-    padding-top: 120px;
-    padding-bottom: 120px;
-    padding-left: 160px;
-    padding-right: 160px;
+  padding-top: 120px;
+  padding-bottom: 120px;
+  padding-left: 160px;
+  padding-right: 160px;
+
+  &.l {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 100px;
+    padding-right: 100px;
+  }
 }
 
 h1 {
-    font-size: 50px;
+  font-size: 50px;
 }
 
 h2 {
-    font-size: 45px;
+  font-size: 40px;
 }
 
 p {
-    font-size: 20px;
+  font-size: 20px;
+  line-height: 30px;
 }
 
 .color {
-    &-purple {
-        color: #6246EA;
-    }
+  &-white {
+    color: #FFFFFE;
+  }
+
+  &-purple {
+    color: #6246EA;
+  }
+
+  &-light-grey {
+    color: #D2D6DB;
+  }
+
+  &-grey {
+    color: #C0C0C0;
+  }
+
+  &-dark-grey {
+    color: #9A9494;
+  }
+
+  &-black {
+    color: #2B2C34;
+  }
+}
+
+.bg {
+  &-white {
+    background-color: #FFFFFE;
+  }
+
+  &-dark {
+    background-color: #2B2C34;
+  }
+
+  &-purple {
+    background-color: #6246EA;
+  }
+
+  &-light-grey {
+    background-color: #EFF0F3;
+  }
+
+  &-grey {
+    background-color: #C0C0C0;
+  }
+
+  &-dark-grey {
+    background-color: #9A9494;
+  }
+}
+
+.button {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(143, 148, 155, 0.5);
+  cursor: pointer;
 }
