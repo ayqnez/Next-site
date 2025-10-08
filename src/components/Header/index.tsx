@@ -10,9 +10,9 @@ export default function Header() {
                 <div className={styles.headerContent}>
 
                     <div className={styles.headerLeft}>
-                        <div className={clsx(styles.headerLogo)}>
+                        <Link href={"/"} className={clsx(styles.headerLogo)}>
                             Quickly
-                        </div>
+                        </Link>
 
                         <nav className={clsx(styles.headerLinks)}>
                             <Link href={'/'} className={clsx(styles.link, 'text')}>Home</Link>

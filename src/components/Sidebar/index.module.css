@@ -1,7 +1,7 @@
-.sidebar {
+.wrapper {
     height: auto;
     min-height: 91vh;
-    padding: 15px;
+    padding: 15px 20px;
     display: flex;
     flex-direction: column;
     transition: width 0.3s ease;
@@ -9,11 +9,11 @@
 }
 
 .open {
-    width: 230px;
+    min-width: 220px;
 }
 
 .closed {
-    width: 60px;
+    width: 58px;
 }
 
 .header {
@@ -45,35 +45,29 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
+
+    li {
+        cursor: pointer;
+        transition: color 0.3s ease;
+    }
+
+    li:hover {
+        color: #6246EA;
+    }
 }
 
 .section {
-    margin-top: 1.5rem;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .title {
-    font-size: 13px;
+    font-size: 20px;
 }
 
 .active {
     color: #9b5cff;
     font-weight: bold;
-}
-
-.footer {
-    margin-top: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.logout,
-.settings {
-    background: none;
-    border: none;
-    text-align: left;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 20px;
 }

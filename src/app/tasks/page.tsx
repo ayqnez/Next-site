@@ -1,17 +1,20 @@
+"use client"
+
 import pageStyles from "@/styles/pages/tasks/index.module.css"
 import clsx from "clsx";
 import Sidebar from "@/components/Sidebar";
+import {TasksList} from "@/components/TasksList";
+import { useState } from "react";
 
-export const metadata = {
-    title: "Quickly | Tasks",
-    description: "Your tasks",
-}
 
 export default function Index() {
+    const [activeFilter, setActiveFilter] = useState("all");
+
     return (
         <>
-            <div className={clsx('bg-light-grey')}>
-                <Sidebar />
+            <div className={clsx('bg-light-grey', pageStyles.tasksContainer)}>
+                <Sidebar onSelect={setActiveFilter} />
+                <TasksList activeFilter={activeFilter} />
             </div>
         </>
     )

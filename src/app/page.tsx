@@ -41,19 +41,19 @@ export default function Index() {
         />
 
 
-        <SubscribeBanner
-            title='Subscribe For the lastest updates'
-            subtitle='Subscribe to newsletter and never miss the new post every week.'
-            button={{
-                href: '/',
-                caption: 'Subscribe',
-                className: 'bg-purple color-white'
-            }}
-            icon={subscribeIcon.src}
-            childrenClassNames={{
-                container: 'bg-light-grey'
-            }}
-        />
+        {/*<SubscribeBanner*/}
+        {/*    title='Subscribe For the lastest updates'*/}
+        {/*    subtitle='Subscribe to newsletter and never miss the new post every week.'*/}
+        {/*    button={{*/}
+        {/*        href: '/',*/}
+        {/*        caption: 'Subscribe',*/}
+        {/*        className: 'bg-purple color-white'*/}
+        {/*    }}*/}
+        {/*    icon={subscribeIcon.src}*/}
+        {/*    childrenClassNames={{*/}
+        {/*        container: 'bg-light-grey'*/}
+        {/*    }}*/}
+        {/*/>*/}
       </div>
     </>
   );

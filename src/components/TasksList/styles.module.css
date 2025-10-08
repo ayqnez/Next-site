@@ -1,0 +1,25 @@
+.container {
+}
+
+.handleErr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    gap: 10px;
+
+    margin-top: 70px;
+    margin-left: 300px;
+}
+
+.content {
+    margin-top: 70px;
+}
+
+.list {
+    margin-top: 40px;
+    display: flex;
+    gap: 40px;
+}
