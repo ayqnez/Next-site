@@ -13,7 +13,7 @@ export default function Index() {
     return (
         <>
             <div className={clsx('bg-light-grey', pageStyles.tasksContainer)}>
-                <Sidebar onSelect={setActiveFilter} />
+                <Sidebar onSelect={setActiveFilter} activeFilter={activeFilter}/>
                 <TasksList activeFilter={activeFilter} />
             </div>
         </>

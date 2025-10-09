@@ -1,16 +1,20 @@
 "use client"
 import styles from './index.module.css'
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import {useState} from "react";
+import { useState } from "react";
 import clsx from "clsx";
+import AddTaskModal from '../AddTaskModal';
 
 type SidebarProps = {
+    activeFilter: string,
     onSelect: (category: string) => void;
 }
 
 export default function Sidebar(props: SidebarProps) {
-    const { onSelect } = props;
+    const { activeFilter, onSelect } = props;
     const [isOpen, setIsOpen] = useState(true);
+
+    const [showModal, setShowModal] = useState(false);
 
     const handleClick = (category: string) => {
         if (onSelect) onSelect(category);
@@ -25,7 +29,7 @@ export default function Sidebar(props: SidebarProps) {
                 </button>
             </div>
 
-            { isOpen ? (
+            {isOpen ? (
                 <>
                     <div className={styles.container}>
                         <div className={styles.section}>
@@ -36,9 +40,14 @@ export default function Sidebar(props: SidebarProps) {
                         </div>
 
                         <div className={styles.section}>
-                            <p className={clsx(styles.title, 'color-grey')}>TASKS</p>
+                            {showModal && <AddTaskModal onClose={() => setShowModal(false)} />}
+
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                <p className={clsx(styles.title, 'color-grey')}>TASKS</p>
+                                <button className={clsx(styles.addBtn)} onClick={() => setShowModal(true)}>+</button>
+                            </div>
                             <ul className={styles.list}>
-                                <li onClick={() => handleClick("all")}>ALL TASKS</li>
+                                <li onClick={() => handleClick("all")} className={activeFilter === "all" ? styles.active : ''}>ALL TASKS</li>
                             </ul>
 
                         </div>
@@ -46,15 +55,15 @@ export default function Sidebar(props: SidebarProps) {
                         <div className={styles.section}>
                             <p className={clsx(styles.title, 'color-grey')}>Filter by: </p>
                             <ul className={clsx(styles.list)}>
-                                <li onClick={() => handleClick("completed")}>COMPLETED</li>
-                                <li onClick={() => handleClick("in_progress")}>IN PROGRESS</li>
-                                <li onClick={() => handleClick("not_started")}>NOT STARTED</li>
+                                <li onClick={() => handleClick("completed")} className={activeFilter === "completed" ? styles.active : ''}>COMPLETED</li>
+                                <li onClick={() => handleClick("in_progress")} className={activeFilter === "in_progress" ? styles.active : ''}>IN PROGRESS</li>
+                                <li onClick={() => handleClick("not_started")} className={activeFilter === "not_started" ? styles.active : ''}>NOT STARTED</li>
                             </ul>
                         </div>
 
                     </div>
                 </>
-            ) : null }
+            ) : null}
         </div>
     );
 }

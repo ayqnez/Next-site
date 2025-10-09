@@ -21,8 +21,73 @@ export const useTasksStore = create((set, get) => ({
             const data = await res.json();
             set({ tasks: data, loading: false });
         } catch (err) {
-            console.error(err);
-            set({ error: err.message, loading: false });
+            
+        }
+    },
+
+    createTask: async (newTask) => {
+        set({ loading: true, error: null })
+        try {
+            const res = await fetch(`${API_URL}/task`, {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(newTask)
+            })
+            if (res.ok) {
+                const createdTask = await res.json();
+                set((state) => ({
+                    tasks: [...state.tasks, createdTask],
+                    loading: false
+                }))
+            }
+        } catch (err) {
+
+        }
+    },
+
+    editTask: async (taskId, updatedData) => {
+        set({ loading: true, error: null })
+        try {
+            const res = await fetch(`${API_URL}/task/${taskId}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(updatedData)
+            })
+            if (res.ok) {
+                const updatedTask = await res.json();
+                set((state) => ({
+                    tasks: state.tasks.map((task) =>
+                        task.id === taskId ? updatedTask : task
+                    ),
+                    loading: false
+                }))
+            }
+        } catch (error) {
+
+        }
+    },
+
+    deleteTask: async (taskId) => {
+        set({ loading: true, error: null })
+        try {
+            const res = await fetch(`${API_URL}/task/${taskId}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+            if (res.ok) {
+                set((state) => ({
+                    tasks: state.tasks.filter((task) => task.id !== taskId),
+                    loading: false,
+                }))
+            }
+        } catch (err) {
+
         }
     },
 

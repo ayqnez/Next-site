@@ -22,12 +22,6 @@
     justify-content: end;
 }
 
-.logo {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #9b5cff;
-}
-
 .toggle {
     background: none;
     border: none;
@@ -63,11 +57,24 @@
     gap: 15px;
 }
 
-.title {
-    font-size: 20px;
-}
-
 .active {
     color: #9b5cff;
     font-weight: bold;
+    position: relative;
+}
+
+.active::before {
+    content: "";
+    position: absolute;
+    left: -20px;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background-color: #9b5cff;
+    border-radius: 0 4px 4px 0;
+}
+
+.addBtn {
+    cursor: pointer;
+    font-size: 20px;
 }
