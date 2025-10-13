@@ -1,24 +1,24 @@
 .container {
-    width: 100%;
-    padding: 50px;
+  width: 100%;
+  padding: 50px;
+  overflow: hidden;
 }
 
 .handleErr {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-    text-align: center;
-    gap: 10px;
+  text-align: center;
+  gap: 10px;
 
-    margin-top: 70px;
-    margin-left: 300px;
+  margin-top: 70px;
 }
 
 .list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); 
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
   gap: 10px;
   margin-top: 20px;
   padding: 10px 0;

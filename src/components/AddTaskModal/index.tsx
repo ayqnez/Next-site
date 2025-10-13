@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 import clsx from "clsx";
 import { useTasksStore } from "@/store/useTasksStore";
@@ -14,6 +14,21 @@ export default function AddTaskModal({ onClose }: AddTaskModalProps) {
     const [title, setTitle] = useState("");
     const [text, setText] = useState("");
     const [category, setCategory] = useState("not_started");
+    const [user_id, setUserID] = useState(0);
+
+    useEffect(() => {
+        const storedUser = localStorage.getItem("user");
+        if (storedUser) {
+            try {
+                const user = JSON.parse(storedUser);
+                setUserID(user.id);
+            } catch {
+                console.error("Ошибка при чтении пользователя из localStorage");
+            }
+        }
+
+    }, []);
+
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
@@ -22,8 +37,7 @@ export default function AddTaskModal({ onClose }: AddTaskModalProps) {
             return
         }
 
-        createTask({ title, text, category })
-        alert("Good")
+        createTask({ title, text, category, user_id })
         onClose();
     };
 

@@ -3,19 +3,29 @@ import styles from './styles.module.css'
 import clsx from "clsx";
 import TaskDetailsModal from '../TaskDetailsModal';
 import { useTasksStore } from '@/store/useTasksStore';
+import EditTaskModal from '../EditTaskModal';
 
 export type TaskItemProps = {
     id: number,
     title: string;
     text: string;
     category: string;
+    user_id?: number
 };
 
+export type UserProps = {
+    id: number, 
+    username: string,
+    password: string,
+}
+
 export default function TaskItem(props: TaskItemProps) {
-    const { id, title, text, category } = props;
+    const { id, title, text, category, user_id } = props;
 
     const [menuOpen, setMenuOpen] = useState(false);
+
     const [showDetailsModal, setShowDetailsModal] = useState(false);
+    const [editModal, setEditModal] = useState(false);
 
     const menuRef = useRef<HTMLDivElement | null>(null);
 
@@ -37,7 +47,7 @@ export default function TaskItem(props: TaskItemProps) {
                 <div className={clsx(styles.container)}>
                     <div className={clsx(styles.content)}>
                         <div className={clsx(styles.title)}>
-                            <h3 className={'color-white'}>{title}</h3>
+                            <h4 className={'color-white'}>{title}</h4>
 
                             <div ref={menuRef}>
                                 <button
@@ -50,11 +60,20 @@ export default function TaskItem(props: TaskItemProps) {
 
                                 {menuOpen && (
                                     <div className={clsx(styles.moreButtonMenu, 'bg-light-black')}>
-                                        <button onClick={() => console.log("Edit clicked")} className='color-white'>Edit</button>
+                                        <button onClick={() => setEditModal(true)} className='color-white'>Edit</button>
                                         <button onClick={() => setShowDetailsModal(true)} className='color-white'>View</button>
                                         <button onClick={() => deleteTask(id)} className='color-white'>Delete</button>
                                     </div>
                                 )}
+
+                                <EditTaskModal 
+                                    isOpen={editModal}
+                                    onClose={() => setEditModal(false)}
+                                    id={id}
+                                    title={title}
+                                    text={text}
+                                    category={category}
+                                />
 
                                 <TaskDetailsModal
                                     isOpen={showDetailsModal}

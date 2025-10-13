@@ -16,7 +16,6 @@
 }
 
 .headerLogo {
-    color: #6246EA;
     font-size: 24px;
     font-weight: 700;
 }
@@ -48,4 +47,11 @@
 .headerButtons {
     display: flex;
     gap: 15px;
+}
+
+.headerInfo {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    gap: 10px;
 }

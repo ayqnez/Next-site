@@ -17,7 +17,7 @@ export default function Sidebar(props: SidebarProps) {
     const [showModal, setShowModal] = useState(false);
 
     const handleClick = (category: string) => {
-        if (onSelect) onSelect(category);
+        onSelect(category);
     }
 
     return (
@@ -34,8 +34,8 @@ export default function Sidebar(props: SidebarProps) {
                     <div className={styles.container}>
                         <div className={styles.section}>
                             <p className={clsx(styles.title, 'color-grey')}>MAIN MENU</p>
-                            <ul>
-                                <p>Dashboard</p>
+                            <ul className={styles.list}>
+                                <li onClick={() => handleClick("dashboard")} className={activeFilter === "dashboard" ? styles.active : ''}>Dashboard</li>
                             </ul>
                         </div>
 
@@ -47,7 +47,7 @@ export default function Sidebar(props: SidebarProps) {
                                 <button className={clsx(styles.addBtn)} onClick={() => setShowModal(true)}>+</button>
                             </div>
                             <ul className={styles.list}>
-                                <li onClick={() => handleClick("all")} className={activeFilter === "all" ? styles.active : ''}>ALL TASKS</li>
+                                <li onClick={() => handleClick("all")} className={activeFilter === "all" ? styles.active : ''}>All tasks</li>
                             </ul>
 
                         </div>
@@ -55,9 +55,9 @@ export default function Sidebar(props: SidebarProps) {
                         <div className={styles.section}>
                             <p className={clsx(styles.title, 'color-grey')}>Filter by: </p>
                             <ul className={clsx(styles.list)}>
-                                <li onClick={() => handleClick("completed")} className={activeFilter === "completed" ? styles.active : ''}>COMPLETED</li>
-                                <li onClick={() => handleClick("in_progress")} className={activeFilter === "in_progress" ? styles.active : ''}>IN PROGRESS</li>
-                                <li onClick={() => handleClick("not_started")} className={activeFilter === "not_started" ? styles.active : ''}>NOT STARTED</li>
+                                <li onClick={() => handleClick("completed")} className={activeFilter === "completed" ? styles.active : ''}>Completed</li>
+                                <li onClick={() => handleClick("in_progress")} className={activeFilter === "in_progress" ? styles.active : ''}>In progress</li>
+                                <li onClick={() => handleClick("not_started")} className={activeFilter === "not_started" ? styles.active : ''}>Not started</li>
                             </ul>
                         </div>
 
