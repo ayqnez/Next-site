@@ -11,7 +11,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <Header />
-      <body>
+      <body style={{ marginTop: '68px' }}>
         {children}
       </body>
     </html>

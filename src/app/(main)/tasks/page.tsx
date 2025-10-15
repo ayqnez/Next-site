@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { TasksList } from "@/components/TasksList";
+import { TasksPage } from "@/components/TasksPage";
 
 export const metadata = {
     title: "Quickly | Tasks page",
@@ -11,7 +11,7 @@ export default function Index() {
     return (
         <>
             <div className={clsx('bg-light-grey')}>
-                <TasksList />
+                <TasksPage />
             </div>
         </>
     )
