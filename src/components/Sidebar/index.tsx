@@ -40,7 +40,7 @@ export default function Sidebar(props: SidebarProps) {
                         </div>
 
                         <div className={styles.section}>
-                            {showModal && <AddTaskModal onClose={() => setShowModal(false)} />}
+                            <AddTaskModal open={showModal} onClose={() => setShowModal(false)} />
 
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                 <p className={clsx(styles.title, 'color-grey')}>TASKS</p>

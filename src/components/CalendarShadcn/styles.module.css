@@ -1,0 +1,78 @@
+.calendarContainer {
+    color: #fff;
+    border-radius: 1rem;
+    padding: 10px;
+    width: fit-content;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.calendarHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+}
+
+.monthText {
+    font-size: 1.125rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.navButtons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.navBtn {
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+}
+
+.calendar {
+    color: #d1d5db;
+}
+
+.calendar table {
+    margin: 0 auto;
+}
+
+.calendar nav, .calendar span {
+    display: none;
+}
+
+.calendar td {
+    color: #000;
+}
+
+
+.day {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+    cursor: pointer;
+}
+
+.day:hover {
+    background-color: #2f3035;
+}
+
+.daySelected {
+    background-color: #7367f0;
+    color: #fff;
+}
+
+.dayToday {
+    color: #7367f0;
+    font-weight: 600;
+}

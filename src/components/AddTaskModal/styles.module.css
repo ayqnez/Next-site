@@ -1,16 +1,6 @@
-.wrapper {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1200;
-}
-
 .container {
     border-radius: 16px;
-    padding: 50px 30px;
+    padding: 30px 20px;
     width: 400px;
     display: flex;
     flex-direction: column;
@@ -20,28 +10,11 @@
 .form {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-}
-
-.form input,
-.form textarea,
-.form select {
-    background: #1c1c1c;
-    border: none;
-    padding: 10px 14px;
-    border-radius: 8px;
-    color: white;
+    gap: 15px;
 }
 
 .actions {
     display: flex;
     justify-content: flex-end;
     gap: 10px;
-}
-
-.actions button {
-    border: none;
-    border-radius: 8px;
-    padding: 8px 16px;
-    cursor: pointer;
 }

@@ -8,6 +8,7 @@ import TaskItem, { TaskItemProps, UserProps } from "@/components/TaskItem";
 import AddTaskModal from "../AddTaskModal";
 import Sidebar from "../Sidebar";
 import Dashboard from "../Dashboard";
+import { Spinner } from "../ui/spinner";
 
 type HandleErrProps = {
     errMessage: string,
@@ -23,7 +24,10 @@ export function HandleErr(props: HandleErrProps) {
     return (
         <div className={styles.handleErr}>
             <img src={img.imgSrc} alt={img.alt} />
-            <h2>{errMessage}</h2>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <Spinner className="size-8"/>
+                <h2>{errMessage}</h2>
+            </div>
         </div>
     )
 }
@@ -70,7 +74,7 @@ export function TasksPage() {
                     <HandleErr errMessage="No tasks found for this filter." img={{ imgSrc: findTask.src, alt: 'No tasks' }} />
                 ) : (
                     <div className={clsx(styles.content)}>
-                        {showModal && <AddTaskModal onClose={() => setShowModal(false)} />}
+                        <AddTaskModal open={showModal} onClose={() => setShowModal(false)} />
 
                         <div
                             style={{
