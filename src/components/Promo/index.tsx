@@ -12,7 +12,7 @@ type PromoProps = {
     style?: React.CSSProperties,
 
     info?: string,
-    title?: string,
+    title?: string | React.ReactNode
     subtitle?: string,
     description?: string,
     buttons?: ButtonProps[],
@@ -22,7 +22,11 @@ type PromoProps = {
     childrenClassNames?: {
         container?: string,
         content?: string,
+        info?: string,
         title?: string,
+        subtitle?: string,
+        description?: string,
+        buttons?: string,
         additionalContentNode?: string,
     }
 }
@@ -36,18 +40,18 @@ export default function Promo(props: PromoProps) {
 
                 <div className={clsx(styles.content)} style={style}>
                     {info && (
-                        <p className={clsx(styles.promoInfo)}>{info}</p>
+                        <div className={clsx(styles.promoInfo, childrenClassNames?.info)}>{info}</div>
                     )}
                     {title && (
-                        <h1 className={clsx(styles.promoTitle, childrenClassNames?.title)}>{title}</h1>
+                        <div className={clsx(styles.promoTitle, childrenClassNames?.title)}>{title}</div>
                     )}
                     {subtitle && (
-                        <h2>{subtitle}</h2>
+                        <div className={clsx(styles.promoSubtitle, childrenClassNames?.subtitle)}>{subtitle}</div>
                     )}
                     {description && (
-                        <p className={clsx(styles.promoDesc)}>{description}</p>
+                        <div className={clsx(styles.promoDesc, childrenClassNames?.description)}>{description}</div>
                     )}
-                    <div className={clsx(styles.promoButtons)}>
+                    <div className={clsx(styles.promoButtons, childrenClassNames?.buttons)}>
                         {buttons.length > 0 && (
                             buttons.map((btn, index) => (
                                 <Link key={index} href={btn.href} title={btn.caption} className={clsx('button', btn.className)}>

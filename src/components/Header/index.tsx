@@ -4,70 +4,87 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import styles from "../../styles/Header/header.module.css";
 import clsx from "clsx";
-import logo2 from "@/images/header/logo2.png"
-import userlogo from "@/images/header/userlogo.png"
-import { UserProps } from "../TaskItem";
+import userlogo from "@/images/header/userlogo.png";
+import { usePathname, useRouter } from "next/navigation";
 
-export default function Header() {
-    const [user, setUser] = useState<UserProps | null>(null);
+export type UserProps = {
+    id: Number,
+    username: String,
+    name: String,
+    surname: String,
+    email: String,
+    role: String
+}
+
+type HeaderProps = {
+    user?: UserProps | null
+}
+
+export default function Header(props: HeaderProps) {
+    const { user } = props
+
+    const [hidden, setHidden] = useState(false);
+
+    const router = useRouter();
+    const pathname = usePathname();
 
     useEffect(() => {
-        const storedUser = localStorage.getItem("user");
-        if (storedUser) {
-            try {
-                setUser(JSON.parse(storedUser));
-            } catch {
-                localStorage.removeItem("user");
+        let lastScrollY = window.scrollY;
+
+        const onScroll = () => {
+            const currentScrollY = window.scrollY;
+
+            if (currentScrollY > lastScrollY && currentScrollY > 80) {
+                setHidden(true);
+            } else {
+                setHidden(false);
             }
-        }
+
+            lastScrollY = currentScrollY;
+        };
+
+        window.addEventListener("scroll", onScroll);
+        return () => window.removeEventListener("scroll", onScroll);
     }, []);
 
-    const handleLogout = () => {
-        localStorage.removeItem("user");
-        setUser(null);
-        window.location.reload();
+    const handleLogout = async () => {
+        await fetch("/api/auth/logout", {
+            method: 'POST'
+        })
+
+        router.refresh();
     };
 
     return (
-        <header className={styles.header}>
+        <header className={clsx(styles.header, hidden && styles.hidden)}>
             <div className={styles.headerContent}>
-                <div className={styles.headerLeft}>
-                    <Link href="/" className={clsx(styles.headerLogo, 'color-purple')}>
-                        {/* <img src={logo2.src} alt="Logo" /> */}
-                        Quickly
-                    </Link>
+                <nav className={styles.headerLinks}>
+                    <Link href="/" className={clsx(styles.link, pathname === "/" && styles.active)}>Home</Link>
+                    <Link href="/recognize" className={clsx(styles.link, pathname === "/recognize" && styles.active)}>Recognize</Link>
+                    <Link href="/statistic" className={clsx(styles.link, pathname === "/statistic" && styles.active)}>Statistic</Link>
+                </nav>
 
-                    <nav className={clsx(styles.headerLinks)}>
-                        <Link href="/" className={clsx(styles.link)}>Home</Link>
-                        <Link href="/tasks" className={clsx(styles.link)}>Tasks</Link>
-                        <Link href="/statistic" className={clsx(styles.link)}>Statistic</Link>
-                    </nav>
-                </div>
-
-                <div className={clsx(styles.headerButtons)}>
-                    {user ? (
-                        <>
-                            <span className={clsx(styles.headerInfo, "color-dark-grey")}>
-                                <img src={userlogo.src} alt="User Logo"/>
-                                {user.username || "user" }
-                            </span>
-                            <button
-                                onClick={handleLogout}
-                                className="button sm bg-purple color-white"
-                            >
-                                Log out
-                            </button>
-                        </>
-                    ) : (
-                        <>
-                            <Link href="/register" className="button bg-purple color-white">
-                                Sign up
-                            </Link>
-                            <Link href="/login" className="button">
-                                Log in
-                            </Link>
-                        </>
-                    )}
+                <div className={styles.headerButtons}>
+                    <>
+                        {user ? (
+                            <>
+                                <Link href='/profile' className="color-white">
+                                    {user.name + " " + user.surname}
+                                </Link>
+                                <button className="button bg-purple color-white" onClick={handleLogout}>
+                                    Logout
+                                </button>
+                            </>
+                        ) : (
+                            <>
+                                <Link href="/register" className="button bg-purple color-white">
+                                    Sign up
+                                </Link>
+                                <Link href="/login" className="button color-white">
+                                    Log in
+                                </Link></>
+                        )}
+                    </>
                 </div>
             </div>
         </header>

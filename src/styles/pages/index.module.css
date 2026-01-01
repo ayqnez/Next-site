@@ -1,3 +1,47 @@
-.promoAdd {
-    transform: scale(1.2);
+.title {
+    font-size: 80px !important;
+    text-align: center;
+}
+
+.desc {
+    text-align: center;
+}
+
+.info {
+    text-align: center;
+    background: linear-gradient(90deg, #CAA9D3 0%, #828ED6 50%, #B7D6EF 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.buttons {
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    justify-content: center !important;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.nodeContainer {
+    align-items: center;
+    gap: 50px;
+}
+
+.nodeTitle {
+    background: linear-gradient(90deg, #f93a3a 0%, #677bed 50%, #B7D6EF 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 140% !important;
+}
+
+.additionalContentNode {
+    margin-left: 50px;
+}
+
+.additionalContentNode img {
+    border-radius: 30px;
 }

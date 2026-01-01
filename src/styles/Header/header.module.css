@@ -1,15 +1,28 @@
 .header {
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 600px;
     height: 68px;
+
     display: flex;
     align-items: center;
+    justify-content: center;
 
-    background: #fff;
-    /* position: fixed; */
-    width: 100%;
-    /* top: 0;
-    left: 0;
-    z-index: 1000; */
+    background: #161616;
+    border-radius: 16px;
+    z-index: 1000;
+
+    transition: transform 0.4s ease, opacity 0.4s ease;
 }
+
+.hidden {
+    transform: translate(-50%, -120%);
+    opacity: 0;
+}
+
 
 .headerContent {
     width: 100%;
@@ -37,12 +50,17 @@
 }
 
 .link {
-    color: #000;
+    color: #fff;
     text-decoration: none;
     font-size: 16px;
     font-weight: 400;
     line-height: 150%;
     transition: color 0.3s ease;
+    text-transform: uppercase;
+}
+
+.active {
+    color: #6246EA;
 }
 
 .link:hover {
@@ -51,6 +69,7 @@
 
 .headerButtons {
     display: flex;
+    align-items: center;
     gap: 15px;
 }
 
