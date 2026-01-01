@@ -3,27 +3,38 @@
 import { useState } from "react";
 import styles from "./styles.module.css";
 import clsx from "clsx";
-import { useTasksStore } from "@/store/useTasksStore";
 import { useRouter } from "next/navigation";
 
 export default function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    const { loginUser } = useTasksStore();
-    const router = useRouter()
+    const [error, setError] = useState<string | null>(null)
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const router = useRouter();
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        const user = await loginUser({ username, password });
-        if (user && user.id) {
+        try {
+            const res = await fetch("/api/auth/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username, password }),
+            });
+
+            if (!res.ok) {
+                if (res.status === 401 || res.status === 403) {
+                    setError('Invalid username or password')
+                }
+                return;
+            }
+
             router.push("/");
-        } else {
-            alert("Неверное имя пользователя или пароль");
+        } catch {
+
         }
     };
-
 
     return (
         <div className={clsx(styles.wrapper, 'bg-black')}>
@@ -50,6 +61,12 @@ export default function Login() {
                 <button type="submit" className='button bg-purple color-white'>
                     Login
                 </button>
+
+                {error && (
+                    <p className="color-red" style={{ fontSize: "14px", textAlign: "center" }}>
+                        {error}
+                    </p>
+                )}
 
                 <p className='color-grey' style={{ fontSize: '14px', textAlign: 'center' }}>
                     Don't have an account?{" "}

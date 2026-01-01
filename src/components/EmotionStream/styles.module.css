@@ -1,0 +1,23 @@
+.wrapper {
+    padding-top: 130px !important;
+}
+
+.container {
+    margin-top: 50px;
+    display: flex;
+    gap: 50px;
+}
+
+.title {
+    text-align: center;
+}
+
+.buttons {
+    margin: 20px 0;
+    display: flex;  
+    gap: 20px;
+}
+
+.input {
+    display: none;
+}
